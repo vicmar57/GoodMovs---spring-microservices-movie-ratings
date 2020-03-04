@@ -19,4 +19,4 @@ Micro-service system architecture:
 
 ## Credits
 
-credit to Koushik Kothagal and JavaBrains channel on Youtube.com on [link to Google!](https://www.youtube.com/user/koushks) for the detailed course on Spring Boot Microservices.
+credit to Koushik Kothagal and JavaBrains channel on Youtube.com on [JavaBrains](https://www.youtube.com/user/koushks) for the detailed course on Spring Boot Microservices.
