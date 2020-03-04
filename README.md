@@ -10,7 +10,7 @@ It then combines the results, outputting the movies the user has watched and rat
 The microservice architecture uses Auto-discovery via Eureka, through another microservice, and combines mechanisms for fault tolerance and resilliance (Hystrix).
 
 Micro-service system architecture:
-![Alt text](MS architecture.png?raw=true "system architecture")
+![Alt text](MS_architecture.png?raw=true "system architecture")
 
 ## Usage
 
