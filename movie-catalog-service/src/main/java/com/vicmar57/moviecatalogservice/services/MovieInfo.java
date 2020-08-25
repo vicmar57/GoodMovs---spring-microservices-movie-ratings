@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
-@Service
+//externalizing the service for the hystrix proxy to work correctly
+@Service // makes it a spring bean
 public class MovieInfo {
 
     @Autowired

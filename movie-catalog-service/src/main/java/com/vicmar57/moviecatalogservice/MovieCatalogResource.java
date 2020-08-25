@@ -21,7 +21,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/catalog")
 public class MovieCatalogResource {
 
-    @Autowired
+    @Autowired //somebody has a bean somewhere, of type RestTemplate. inject me that bean. autowire is a cosumer.
+    //injection by type
     private RestTemplate restTemplate;
 
     @Autowired

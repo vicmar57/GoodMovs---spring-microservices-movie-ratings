@@ -16,8 +16,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 @EnableCircuitBreaker
 @EnableHystrixDashboard
 public class MovieCatalogServiceApplication {
-    @Bean
-    @LoadBalanced
+    @Bean // executes this method once and assigns the return statement to the return type to be availible to classes. singleton instance. bean is a producer
+    @LoadBalanced // go through eureka service. does (client-side) service discovery in a load balanced way.
+    //the URL i'm giving you is only a "hint" of where you need to go
+    //client side load balancing  means the microservice itself picks the other microservice to communicate with
     public RestTemplate getRestTemplate(){
         HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         httpComponentsClientHttpRequestFactory.setConnectTimeout(3000);

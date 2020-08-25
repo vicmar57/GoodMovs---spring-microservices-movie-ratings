@@ -24,7 +24,7 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/movies")
 public class MovieResource {
 
-    @Value("${api.key}")
+    @Value("${api.key}") // get value from application.properties file
     private String apiKey;
 
     @Autowired

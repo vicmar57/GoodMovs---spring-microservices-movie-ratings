@@ -10,7 +10,8 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 
-@Service
+//externalizing the service for the hystrix proxy to work correctly
+@Service // makes it a spring bean
 public class UserRatingInfo {
 
     @Autowired
