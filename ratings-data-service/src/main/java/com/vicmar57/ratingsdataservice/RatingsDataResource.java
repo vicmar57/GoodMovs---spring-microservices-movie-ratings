@@ -25,26 +25,15 @@ public class RatingsDataResource {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    // GET method to fetch all movie ratings
     @GetMapping("/allRatings")
     public List<RatingsTableRow> getAllRatings() {
         return movieRepo.findAll();
     }
 
-    // GET method to fetch phone by Id
+    // GET method to fetch movie ratings by movie ID
     @GetMapping("/movies/{movieId}")
     public ResponseEntity<List<Rating>> getRatingsByMovieId(@PathVariable(value = "movieId") Integer movieId) {
-
-//        // Prep work
-//        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-//        Session session = sessionFactory.getCurrentSession();
-//
-//        Transaction tx = session.beginTransaction();
-//        SQLQuery query = session.createSQLQuery("SELECT * FROM users_ratings WHERE movie_id = 123");
-//        List<Object[]> rows = query.list();
-//        for(Object[] row : rows) {
-//            System.out.println(row);
-//        }
-
         String SQLQuery = "SELECT * FROM users_ratings WHERE movie_id = ?";
         List<Map<String, Object>> queryRes = jdbcTemplate.queryForList(SQLQuery, movieId);
 
@@ -54,12 +43,11 @@ public class RatingsDataResource {
                         (Integer) entry.get("rating")))
                 );
 
-        //List<Ratings> ratings = movieRepo.findAllById(Collections.singleton(userId));
-                //.orElseThrow(() -> new Exception("ratings for user " + userId + " not found"));
         return ResponseEntity.ok().body(ratings);
     }
 
-    @RequestMapping("users/{userId}")
+    // GET method to fetch movie ratings for specific user by user ID
+    @GetMapping("users/{userId}")
     public ResponseEntity<UserRating> getAllUserRatings(@PathVariable("userId") Integer userId){
         String SQLQuery = "SELECT movie_id, rating FROM users_ratings WHERE user_id = ?";
         List<Map<String, Object>> movieRatings = jdbcTemplate.queryForList(SQLQuery, userId);
@@ -67,7 +55,8 @@ public class RatingsDataResource {
         List <Rating> ratings = new ArrayList<>();
         movieRatings.forEach(entry -> ratings.add(new Rating(
                 String.valueOf(entry.get("movie_id")),
-                (Integer) entry.get("rating"))));
+                (Integer) entry.get("rating")))
+        );
 
         UserRating userRatings = new UserRating();
         userRatings.setUserRating(ratings);

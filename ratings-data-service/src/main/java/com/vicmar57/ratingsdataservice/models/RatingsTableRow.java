@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 /**
      * This class will represent our user-ratings and its attributes:
-     * - usr_id
+     * - user_id
      * - movie_id
      * - user_rating
      *
@@ -18,7 +18,7 @@ import javax.persistence.*;
     public class RatingsTableRow {
 
         /**
-         * The attributes of the phone
+         * The attributes of the users_ratings table row
          */
         @Id
 //        @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +32,7 @@ import javax.persistence.*;
         private int userRating;    // We will also save the operating system running the phone
 
         /**
-         * Our getters and setters for the attributes above
+         * Getters and setters for the attributes above
          */
         public long getId() {
             return id;
